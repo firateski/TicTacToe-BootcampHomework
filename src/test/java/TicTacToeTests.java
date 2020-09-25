@@ -1,3 +1,5 @@
+import enums.CellValue;
+import enums.WinnerState;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -5,7 +7,7 @@ import static org.junit.Assert.*;
 public class TicTacToeTests {
 
     @Test
-    public void setCellValue_shouldSetCorrectPlace(){
+    public void setCellValue_shouldSetCorrectPlace() {
         // Arrange
         TicTacToe sut = new TicTacToe();
         sut.setCellValue(CellValue.X, 1, 1);
@@ -18,7 +20,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getCellValue_shouldGetCorrectValue(){
+    public void getCellValue_shouldGetCorrectValue() {
         // Arrange
         TicTacToe sut = new TicTacToe();
         sut.setCellValue(CellValue.O, 0, 2);
@@ -31,13 +33,13 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void isTableFilled_shouldReturnTrue_whenTableIsFilled(){
+    public void isTableFilled_shouldReturnTrue_whenTableIsFilled() {
         // Arrange
         TicTacToe sut = new TicTacToe();
 
         // Fill table using nested loops
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 CellValue currentCellValue = j % 2 == 0 ? CellValue.X : CellValue.O;
                 sut.setCellValue(currentCellValue, i, j);
             }
@@ -51,7 +53,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void isTableFilled_shouldReturnFalse_whenTableIsEmpty(){
+    public void isTableFilled_shouldReturnFalse_whenTableIsEmpty() {
         // Arrange
         TicTacToe sut = new TicTacToe();
 
@@ -63,7 +65,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void isTableFilled_shouldReturnFalse_whenTableIsPartiallyFilled(){
+    public void isTableFilled_shouldReturnFalse_whenTableIsPartiallyFilled() {
         // Arrange
         TicTacToe sut = new TicTacToe();
         sut.setCellValue(CellValue.X, 0, 0);
@@ -79,7 +81,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnGameNotCompleted_whenTableIsNotFilledAndNoOneWon(){
+    public void getWinner_shouldReturnGameNotCompleted_whenTableIsNotFilledAndNoOneWon() {
         // Arrange
         TicTacToe sut = new TicTacToe();
         sut.setCellValue(CellValue.O, 0, 0);
@@ -96,7 +98,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnTie_whenTableIsFilledAndNoOneWon(){
+    public void getWinner_shouldReturnTie_whenTableIsFilledAndNoOneWon() {
         // Arrange
         TicTacToe sut = new TicTacToe();
         sut.setCellValue(CellValue.O, 0, 0);
@@ -117,7 +119,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenFirstRowFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenFirstRowFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 0, 0);
@@ -140,7 +142,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenSecondRowFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenSecondRowFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 1, 0);
@@ -163,7 +165,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenThirdRowFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenThirdRowFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 2, 0);
@@ -186,7 +188,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenFirstColumnFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenFirstColumnFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 0, 0);
@@ -209,7 +211,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenSecondColumnFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenSecondColumnFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 0, 1);
@@ -232,7 +234,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenThirdColumnFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenThirdColumnFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 0, 2);
@@ -255,7 +257,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenTopLeftToBottomRightDiagonallyFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenTopLeftToBottomRightDiagonallyFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 0, 0);
@@ -278,7 +280,7 @@ public class TicTacToeTests {
     }
 
     @Test
-    public void getWinner_shouldReturnValidWinner_whenBottomLeftToTopRightDiagonallyFilledByWinner(){
+    public void getWinner_shouldReturnValidWinner_whenBottomLeftToTopRightDiagonallyFilledByWinner() {
         // Arrange
         TicTacToe sutForX = new TicTacToe();
         sutForX.setCellValue(CellValue.X, 2, 2);
